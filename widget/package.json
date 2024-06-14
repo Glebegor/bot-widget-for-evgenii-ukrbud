@@ -1,0 +1,22 @@
+{
+  "name": "wigit",
+  "version": "1.0.0",
+  "description": "description",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "-"
+  },
+  "keywords": [
+    "nothing"
+  ],
+  "author": "Hlib Arseniuk",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
