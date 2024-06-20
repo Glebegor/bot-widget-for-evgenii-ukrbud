@@ -1,6 +1,7 @@
 import dotenv
 import yaml
 import os
+import sqlite3
 
 class Application:
     def __init__(self, config, db):
@@ -22,8 +23,6 @@ class Config:
             'port': configParser['server']['Port'],
             'secret-key': os.getenv('SECRET_KEY'),
             'db': {
-                'host': configParser['db']['Host'],
-                'port': configParser['db']['Port'],
                 'name': configParser['db']['Name'],
                 'password': os.getenv('DB_PASSWORD'),
                 'admin-password': os.getenv('DB_ADMIN_PASSWORD'),
@@ -31,14 +30,18 @@ class Config:
             },
             'debug': True,
         }
-        print('\n!! Config setup')
+        print('\n!! Config initialized')
 
 
     def ToDict(self):
         return self.config
 
+
 class Db:
     def __init__(self, config):
         self.config = config
-        print('!! Database setup')
+        self.con = sqlite3.connect(config["db"]["name"] + ".db")
+        self.cur = self.con.cursor()
+        print('!! Database initialized')
+
 
