@@ -1,4 +1,6 @@
 import dotenv
+import yaml
+import os
 
 class Application:
     def __init__(self, config):
@@ -12,17 +14,18 @@ class Application:
 class Config:
     def __init__(self):
         dotenv.load_dotenv()
+        configParser = yaml.load(open('Config/config.yml'), Loader=yaml.FullLoader)
         self.config = {
-            'host': 'localhost',
-            'port': 8080,
+            'host': configParser['server']['Host'],
+            'port': configParser['server']['Port'],
             'secret-key': os.getenv('SECRET_KEY'),
             'db': {
-                'host': 'localhost',
-                'port': 5436,
-                'name': 'ringostat',
+                'host': configParser['db']['Host'],
+                'port': configParser['db']['Port'],
+                'name': configParser['db']['Name'],
                 'password': os.getenv('DB_PASSWORD'),
                 'admin-password': os.getenv('DB_ADMIN_PASSWORD'),
-                'admin-user': 'admin'
+                'admin-user': configParser['db']['Admin']
             },
             'debug': True,
         }
