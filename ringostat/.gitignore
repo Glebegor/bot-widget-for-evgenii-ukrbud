@@ -3,3 +3,5 @@ token
 __cache__
 venv
 main.db
+
+*.env
