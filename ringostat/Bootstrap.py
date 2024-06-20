@@ -3,12 +3,14 @@ import yaml
 import os
 
 class Application:
-    def __init__(self, config):
+    def __init__(self, config, db):
         self.config = config
+        self.db = db
+
+
 
     def run(self):
-        print('Application is running')
-        print('Config is:', self.config)
+        print('-- Application is running')
 
 
 class Config:
@@ -29,6 +31,14 @@ class Config:
             },
             'debug': True,
         }
+        print('\n!! Config setup')
+
 
     def ToDict(self):
         return self.config
+
+class Db:
+    def __init__(self, config):
+        self.config = config
+        print('!! Database setup')
+
