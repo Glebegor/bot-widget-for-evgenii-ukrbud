@@ -1,0 +1,11 @@
+
+db:
+  Port: "5436"
+  Host: "localhost"
+  User: "postgres"
+  Name: "ringostat"
+  Admin: "admin"
+
+server:
+  Port: "8080"
+  Host: "localhost"

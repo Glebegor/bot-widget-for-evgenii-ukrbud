@@ -1,0 +1,11 @@
+# Ringostat app
+
+## Config
+
+### .env
+```env
+DB_PASSWORD = "123321"
+DB_ADMIN_PASSWORD = "123321"
+
+SECRET_KEY = "secret_key"
+```
