@@ -7,3 +7,4 @@ db:
 server:
   Port: "8080"
   Host: "localhost"
+  Debug: "true"

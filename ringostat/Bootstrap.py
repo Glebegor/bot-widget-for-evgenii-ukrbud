@@ -2,15 +2,17 @@ import dotenv
 import yaml
 import os
 import sqlite3
+import flask
 
 class Application:
     def __init__(self, config, db):
         self.config = config
         self.db = db
-
-
+        self.client = flask.Flask(__name__)
+        print('!! Application initialized')
 
     def run(self):
+        self.client.run(host=self.config['host'], port=self.config['port'], debug=self.config['debug'])
         print('-- Application is running')
 
 
@@ -28,7 +30,8 @@ class Config:
                 'admin-password': os.getenv('DB_ADMIN_PASSWORD'),
                 'admin-user': configParser['db']['Admin']
             },
-            'debug': True,
+            # 'debug': if configParser['server']['Debug'] == 'true' ? True else False,
+            'debug': configParser['server']['Debug'] == 'true',
         }
         print('\n!! Config initialized')
 
