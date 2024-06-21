@@ -16,21 +16,21 @@ class ManagerController:
     def run(self):
         @self.client.route(self.path, methods=['GET'])
         def Get():
-            return 'Hello, World!'
+            return self.service.Get()
 
         @self.client.route(self.path + "/:id", methods=['GET'])
         def GetById():
-            return 'Hello, World!'
+            return self.service.GetById()
 
         @self.client.route(self.path, methods=['POST'])
         def Create():
-            return 'Hello, World!'
+            return self.service.Create()
 
         @self.client.route(self.path + "/:id", methods=['PUT'])
         def Update():
-            return 'Hello, World!'
+            return self.service.Update()
 
         @self.client.route(self.path + "/:id", methods=['DELETE'])
         def Delete():
-            return 'Hello, World!'
+            return self.service.Delete()
 
