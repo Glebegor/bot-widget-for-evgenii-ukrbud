@@ -3,7 +3,10 @@ import yaml
 import os
 import sqlite3
 import flask
-
+from Application.Controller.Controller import Controller, NewController
+from Application.Controller.ManagersController import NewManagersController
+from Infrastructure.Data.ManagersRepository import NewManagersRepository
+from Infrastructure.Service.ManagersService import NewManagersService
 class Application:
     def __init__(self, config, db):
         self.config = config
@@ -11,7 +14,21 @@ class Application:
         self.client = flask.Flask(__name__)
         print('!! Application initialized')
 
+    def initControllers(self):
+
+        # Managers
+        managersRepo = NewManagersRepository(self.db)
+        managersService = NewManagersService(managersRepo)
+
+        return [
+            NewManagersController('/api/v1', self.client, self.config, managersService)
+        ]
+
     def run(self):
+        # service =
+        initListControllers = self.initControllers()
+        controller = NewController(self.client, self.config, initListControllers)
+        controller.run()
         self.client.run(host=self.config['host'], port=self.config['port'], debug=self.config['debug'])
         print('-- Application is running')
 
