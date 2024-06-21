@@ -7,16 +7,17 @@ class ManagersService:
         self.repo = repo
 
     def Get(self):
-        return 'Hello, World! Get'
+        print(self.repo)
+        return self.repo.Get()
 
     def GetById(self, id):
-        return 'Hello, World! Get id'
+        return self.repo.GetById(id)
 
     def Create(self, data):
-        return 'Hello, World! Create'
+        return self.repo.Create(data)
 
     def Update(self, id, data):
-        return 'Hello, World! Update'
+        return self.repo.Update(id, data)
 
     def Delete(self, id):
-        return 'Hello, World! Delete'
+        return self.repo.Delete(id)
