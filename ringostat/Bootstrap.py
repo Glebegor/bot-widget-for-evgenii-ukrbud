@@ -3,15 +3,15 @@ import yaml
 import os
 import sqlite3
 import flask
-
+from Application.Controller.Controller import Controller
 class Application:
     def __init__(self, config, db):
         self.config = config
         self.db = db
         self.client = flask.Flask(__name__)
         print('!! Application initialized')
-
-    def run(self):
+    def run(self, controller):
+        controller = Controller(self.client, self.db, self.config)
         self.client.run(host=self.config['host'], port=self.config['port'], debug=self.config['debug'])
         print('-- Application is running')
 
