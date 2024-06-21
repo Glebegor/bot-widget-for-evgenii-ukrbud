@@ -1,4 +1,4 @@
-
+from .ManagersController import ManagerController
 
 class Controller:
     def __init__(self, client, db, config):
@@ -8,8 +8,6 @@ class Controller:
         print('!! Controller initialized')
 
     def run(self):
-        @self.client.route('/api/v1')
-        def index():
-            return 'Hello, World!'
+        managerController = ManagerController('/api/v1', self.client, self.db, self.config)
+        managerController.run()
 
-        print('!! Controller is running')

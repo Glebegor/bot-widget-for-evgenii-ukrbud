@@ -10,8 +10,9 @@ class Application:
         self.db = db
         self.client = flask.Flask(__name__)
         print('!! Application initialized')
-    def run(self, controller):
+    def run(self):
         controller = Controller(self.client, self.db, self.config)
+        controller.run()
         self.client.run(host=self.config['host'], port=self.config['port'], debug=self.config['debug'])
         print('-- Application is running')
 
